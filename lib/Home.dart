@@ -44,7 +44,7 @@ class RolDice extends StatefulWidget {
 class _RolDiceState extends State<RolDice> {
   int dice1 = 1;
   int dice2 = 1;
-
+  var Ganador = "Example";
   void rollDice() {
     // Marca las variables
     setState(() {
@@ -53,6 +53,21 @@ class _RolDiceState extends State<RolDice> {
     });
   }
 
+  void winnerPlayer()
+  {
+    setState(() {
+      if(dice1 > dice2){
+        Ganador = 'El jugador 1 ha ganado';
+      }
+      else if(dice1 <dice2){
+        Ganador = "El jugador 2 ha ganado";
+      }
+      else if (dice1 == dice2){
+        Ganador = "Existe un empate";
+      }
+    });
+
+  }
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -71,7 +86,7 @@ class _RolDiceState extends State<RolDice> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Example',
+              Ganador,
               style: TextStyle(
                 fontSize: 50,
                 fontWeight: FontWeight.bold,
@@ -87,12 +102,14 @@ class _RolDiceState extends State<RolDice> {
                     child: TextButton(
                         onPressed: () {
                           rollDice();
+                          winnerPlayer();
                         },
                         child: Image.asset('images/dice$dice1.png'))),
                 Expanded(
                     child: TextButton(
                         onPressed: () {
                           rollDice();
+                          winnerPlayer();
                         },
                         child: Image.asset('images/dice$dice2.png'))),
               ],
@@ -101,7 +118,11 @@ class _RolDiceState extends State<RolDice> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
 
               child: GestureDetector(
-                onTap: rollDice,
+                onTap: () {
+                  rollDice();
+                  winnerPlayer();
+                },
+
 
                 child: Container(
                   margin: EdgeInsets.only(top: 40),

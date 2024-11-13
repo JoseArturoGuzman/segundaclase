@@ -101,6 +101,7 @@ class _RolDiceState extends State<RolDice> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
 
               child: GestureDetector(
+                onTap: rollDice,
 
                 child: Container(
                   margin: EdgeInsets.only(top: 40),

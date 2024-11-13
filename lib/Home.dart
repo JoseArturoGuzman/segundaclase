@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
           //elevation: 90,
 
           title: Text(
-            'Material App Bar',
+            'Dice Roller',
             style: TextStyle(
               fontSize: 34,
               fontWeight: FontWeight.bold,
@@ -44,7 +44,7 @@ class RolDice extends StatefulWidget {
 class _RolDiceState extends State<RolDice> {
   int dice1 = 1;
   int dice2 = 1;
-  var Ganador = "Example";
+  var Ganador = "Juegue";
   void rollDice() {
     // Marca las variables
     setState(() {
@@ -53,21 +53,18 @@ class _RolDiceState extends State<RolDice> {
     });
   }
 
-  void winnerPlayer()
-  {
+  void winnerPlayer() {
     setState(() {
-      if(dice1 > dice2){
+      if (dice1 > dice2) {
         Ganador = 'El jugador 1 ha ganado';
-      }
-      else if(dice1 <dice2){
+      } else if (dice1 < dice2) {
         Ganador = "El jugador 2 ha ganado";
-      }
-      else if (dice1 == dice2){
+      } else if (dice1 == dice2) {
         Ganador = "Existe un empate";
       }
     });
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -78,8 +75,8 @@ class _RolDiceState extends State<RolDice> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Colors.cyan,
-                Colors.brown,
+                Color(0x5433FF),
+                Colors.black,
               ]),
         ),
         child: Column(
@@ -90,7 +87,7 @@ class _RolDiceState extends State<RolDice> {
               style: TextStyle(
                 fontSize: 50,
                 fontWeight: FontWeight.bold,
-                color: Colors.cyan,
+                color: Colors.white,
               ),
             ),
             SizedBox(
@@ -116,14 +113,11 @@ class _RolDiceState extends State<RolDice> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-
               child: GestureDetector(
                 onTap: () {
                   rollDice();
                   winnerPlayer();
                 },
-
-
                 child: Container(
                   margin: EdgeInsets.only(top: 40),
                   width: double.infinity,
@@ -136,7 +130,9 @@ class _RolDiceState extends State<RolDice> {
                       child: Text(
                     "Roll Dice",
                     style: TextStyle(
-                      fontSize: 40,
+                      fontSize: 35,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   )),
                 ),
